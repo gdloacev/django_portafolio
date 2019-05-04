@@ -1,0 +1,23 @@
+{% extends 'presentation/base.html' %}
+
+{% block tittle%} Add New Project {% endblock %}
+
+{% block content %} 
+
+{% if 'title' in request.GET %}
+    <h2>Su proyecto {{ request.GET.title }} ha sido dado de alta correctamente</h2>
+{% endif %}
+
+<form action="{% url 'addproject' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <p>
+        <input type="submit" value="Add Project">
+    </p>
+</form>
+
+{% endblock %}
